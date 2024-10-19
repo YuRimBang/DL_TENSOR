@@ -18,3 +18,11 @@ def regLossFunc(target_y, predicted_y, kind="mse"):
         return
     elif kind=="rmse":
         return
+        
+#### [4] 정확도 계산 함수 ==> accuracy
+@tf.function 
+def accuracy(y_pred, y):
+    
+    correct = tf.equal( tf.argmax(y_pred, axis=1),  tf.argmax(y, axis=1))
+    
+    return tf.reduce_mean( tf.cast(correct, tf.float32) )
